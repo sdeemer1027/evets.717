@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $offices = vetoffices::all();
+        $offices = vetoffices::where('id','>','0')->paginate(15);
+        //all()->paginate(15);
 
         return view('home', compact('offices'));
     }

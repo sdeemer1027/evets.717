@@ -43,30 +43,28 @@ EVETS.PET
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            Groomers<BR>
-                            Sign Up --- find new clients are you mobile or do you have a shop?
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
+                            Veterinary Care
                         </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            Pet Owners
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
+                            Groomers
                         </div>
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-Groomers Supplies
+                            Groomers Supplies
+                        </div>
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+                            Pet Owners
                         </div>
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
 Pet Owners Supplies
                         </div>
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            Veterinary
-                        </div>
-
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-
+Dog Walkers
                         </div>
-                    </div>
+
+
                 </div>
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">

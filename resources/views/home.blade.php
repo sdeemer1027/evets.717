@@ -16,8 +16,13 @@
 
                     {{ __('You are logged in!') }}
                     <BR><BR>
-                    we have {{$offices->count()}} Vets ready and waiting
+                   {{--  we have {{$offices->count()--}} Vets ready and waiting
                         <BR><BR>
+                        @foreach($offices as $office)
+                        {{$office->name}}<br>
+                        @endforeach
+                        <hr>
+                        {{$offices}}
                 </div>
             </div>
         </div>
