@@ -18,9 +18,32 @@
                     <BR><BR>
                    {{--  we have {{$offices->count()--}} Vets ready and waiting
                         <BR><BR>
+                        <table class="table table-dark">
+                            <tr>
+                                <td>Name</td>
+                                <td>phone</td>
+                                <td>address</td>
+                                <td>city</td>
+                                <td>state</td>
+                                <td>Zip</td>
+
+                            </tr>
+
                         @foreach($offices as $office)
-                        {{$office->name}}<br>
+
+
+                            <tr>
+                                <td>{{$office->name}}</td>
+                                <td>{{$office->phone}}</td>
+                                <td>{{$office->address}}</td>
+                                <td>{{$office->city}}</td>
+                                <td>{{$office->state}}</td>
+                                <td>{{$office->zip}}</td>
+
+                            </tr>
+
                         @endforeach
+                        </table>
                         <hr>
                         {{$offices}}
                 </div>
