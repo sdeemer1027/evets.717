@@ -51,7 +51,7 @@ EVETS.PET
                         </div>
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            Groomers Supplies
+  Groomers Supplies
                         </div>
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                             Pet Owners

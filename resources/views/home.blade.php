@@ -30,8 +30,6 @@
                             </tr>
 
                         @foreach($offices as $office)
-
-
                             <tr>
                                 <td>{{$office->name}}</td>
                                 <td>{{$office->phone}}</td>
@@ -39,9 +37,7 @@
                                 <td>{{$office->city}}</td>
                                 <td>{{$office->state}}</td>
                                 <td>{{$office->zip}}</td>
-
                             </tr>
-
                         @endforeach
                         </table>
                         <hr>
