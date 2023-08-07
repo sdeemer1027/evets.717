@@ -15,10 +15,11 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                        {{--$user--}}
                     <BR><BR>
-                   {{--  we have {{$offices->count()--}} Vets ready and waiting
+                     Vets ready and waiting
                         <BR><BR>
-                        <table class="table table-dark">
+                        <table class="table  table-striped">
                             <tr>
                                 <td>Name</td>
                                 <td>phone</td>
@@ -42,6 +43,39 @@
                         </table>
                         <hr>
                         {{$offices}}
+{{--
+                        <table class="table  table-striped">
+                            <tr>
+                                <td>Name</td>
+                                <td>phone</td>
+                                <td>address</td>
+                                <td>city</td>
+                                <td>state</td>
+                                <td>Zip</td>
+
+                            </tr>
+
+                            @foreach($petgroomers as $petgroomer)
+                                <tr>
+                                    <td>{{$petgroomer->name}}</td>
+                                    <td>{{$petgroomer->phone}}</td>
+                                    <td>{{$petgroomer->address}}</td>
+                                    <td>{{$petgroomer->city}}</td>
+                                    <td>{{$petgroomer->state}}</td>
+                                    <td>{{$petgroomer->zip}}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+--}}
+                        <hr>
+
+                 we have   <strong> {{$petgroomers->count()}} </strong> Groomers ready with the Clippers and Bath
+
+
+                        {{--$pets--}}
+
+
+
                 </div>
             </div>
         </div>

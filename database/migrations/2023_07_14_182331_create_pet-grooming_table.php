@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\Petgrooming;
+use App\Models\petgroomers;
+//use App\Models\Petgrooming;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,7 +16,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Petgrooming', function (Blueprint $table) {
+        Schema::create('petgroomers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('address')->nullable();
@@ -30,12 +31,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
-/*
-//        $csvFile = fopen(base_path("database/data/vetofficecp.csv"), "r");
+/* */
+        $csvFile = fopen(base_path("database/data/petgrooming.csv"), "r");
         $firstline = true;
         while (($data = fgetcsv($csvFile, 20000, ",")) !== FALSE) {
             if (!$firstline) {
-                Petgrooming::create([
+                petgroomers::create([
                     "name" => $data['1'],
                     "address" => $data['2'],
                     "local" =>$data['3'],
@@ -51,7 +52,7 @@ return new class extends Migration
             $firstline = false;
         }
         fclose($csvFile);
-
+/*
 */
 
 
