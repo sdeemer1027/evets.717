@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+Click here to find a Vet near you<br />
                     {{ __('You are logged in!') }}
                         {{--$user--}}
                     <BR><BR>

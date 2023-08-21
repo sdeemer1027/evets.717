@@ -27,3 +27,5 @@ Route::get('/office-locations/create', [App\Http\Controllers\OfficeLocationContr
 Route::post('/office-locations', [App\Http\Controllers\OfficeLocationController::class,'store'])->name('office-locations.store');
 
 Route::get('/map',  [App\Http\Controllers\MapController::class, 'index']);
+
+Route::get('search', [App\Http\Controllers\VetofficeController::class, 'searchByRadius']);
