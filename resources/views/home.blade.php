@@ -1,9 +1,58 @@
 @extends('layouts.app')
+<style>
+          .scrolling-wrapper {
+            overflow-x: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
 
+        .scrolling-content {
+            display: inline-flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .scrolling-item {
+            flex: 0 0 auto;
+            margin-right: 15px; /* Adjust spacing between images */
+        }
+
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .scroll-left {
+            left: 0;
+        }
+
+        .scroll-right {
+            right: 0;
+        }
+    </style>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
+            {{--$latestPetPhotos--}}
+  <div class="container mt-5">
+        <h1 class="text-center mb-4">Welcome to the last 20 images of the Pet Photo Gallery Uploaded</h1>
+        <div class="scrolling-wrapper">
+            <div class="scrolling-content" id="scrollingContent">
+                @foreach($latestPetPhotos as $photo)
+                    <div class="scrolling-item">
+                        <img src="{{ Storage::url( $photo->photo_path) }}" alt="Pet Photo" style="width: 150px; object-fit: cover;">
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="scroll-button scroll-left" onclick="scrollImages(-1)">&lt;</div>
+            <div class="scroll-button scroll-right" onclick="scrollImages(1)">&gt;</div>
+        </div>
+    </div>
+
+
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -13,10 +62,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-Click here to find a Vet near you<br />
-                    {{ __('You are logged in!') }}
-                        {{--$user--}}
-                    <BR><BR>
+            
+
                      Vets ready and waiting
                         <BR><BR>
                         <table class="table  table-striped">
@@ -81,4 +128,33 @@ Click here to find a Vet near you<br />
         </div>
     </div>
 </div>
+
+
+<script>
+       let currentIndex = 0;
+
+        function scrollImages(direction) {
+            const scrollingContent = document.getElementById('scrollingContent');
+            const itemWidth = scrollingContent.firstElementChild.clientWidth + 15; // Width + margin-right
+
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = scrollingContent.children.length - 1;
+            } else if (currentIndex >= scrollingContent.children.length) {
+                currentIndex = 0;
+            }
+
+            scrollingContent.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        }
+
+        function autoScroll() {
+            setInterval(() => {
+                scrollImages(1);
+            }, 3000);
+        }
+
+        // Start automatic scrolling
+        autoScroll();
+    </script>
 @endsection

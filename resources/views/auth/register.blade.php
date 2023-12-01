@@ -77,8 +77,7 @@
                             <label for="zip" class="col-md-4 col-form-label text-md-end">ZipCode</label>
 
                             <div class="col-md-6">
-                                <input id="zip" type="text" class="form-control"  name="zip" value="{{ old('zip') }}"  autocomplete="zip" autofocus>
-
+                                <input id="zip" type="text" class="form-control"  name="zip" value="{{ old('zip') }}"  required autocomplete="zip" autofocus>
                             </div>
                         </div>
                         <div class="row mb-3">

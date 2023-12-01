@@ -50,4 +50,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+ public function mypets()
+    {
+        return $this->hasMany(Mypet::class, 'userid');
+    }
+
+   public function photos()
+    {
+        return $this->hasMany(UserPhoto::class);
+    }
+
+    /**
+     * Get the profile image for the user.
+     */
+    public function profileImage()
+    {
+        return $this->hasOne(UserPhoto::class)->where('is_profile', true);
+    }
+
+
+
+
+
+
+
+
+
 }

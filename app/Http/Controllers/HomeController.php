@@ -7,6 +7,8 @@ use App\Models\vetoffices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\PetPhoto; // Make sure to import the PetPhoto class
+
 class HomeController extends Controller
 {
     /**
@@ -51,9 +53,17 @@ class HomeController extends Controller
 
         $offices = vetoffices::where('id', '>', '0')->paginate(15);
         $petgroomers= petgroomers::where('id','>','0')->get();//->paginate(15);
-
+//$petgroomers='';
         $pets= petgroomers::where('id','>','0')->get();
 
-        return view('home', compact('offices','user','petgroomers','pets'));
+
+ // Fetch the latest 20 pet pictures
+        $latestPetPhotos = PetPhoto::latest()->take(20)->get();
+
+   //     return view('welcome', compact('latestPetPhotos'));
+
+
+
+        return view('home', compact('offices','user','petgroomers','pets','latestPetPhotos'));
     }
 }

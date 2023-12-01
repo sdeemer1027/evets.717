@@ -36,7 +36,7 @@
 
                         <hr>
 
-
+{{--$locations--}}
 
                 </div>
             </div>

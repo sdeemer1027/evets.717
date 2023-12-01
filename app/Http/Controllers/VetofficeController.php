@@ -87,9 +87,18 @@ class VetofficeController extends Controller
 
     public function searchByRadius(Request $request)
     {
+
+
         $zip = $request->input('zip');
+        if($zip){
  //       $offices = vetoffices::where('id', '>', '0')->paginate(15);
-      //
+
+}
+else{
+    $zip ='07840';
+}
+
+
         $maininfo = zipcodes::select('lat','lng','city','statename')->where('zip','=',$zip)->firstOrFail();
  //       $maininfo2 = zipcodes::select('*')->where('zip','=',$zip)->get();
 //        $maininfo = vetoffices::select('*')->where('zip','=',$zip)->get();
