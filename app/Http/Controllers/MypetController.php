@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mypet;
+use App\Models\User;
+use App\Models\OwnerDetail;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,14 +38,64 @@ $userId = Auth::id();
 
   // Retrieve photos only if the pet has any
         $photos = $mypet->photos ?? collect();
+$allOwnerDetails = '';
+        $allOwnerDetails = Ownerdetail::where('user_id',$mypet->userid)->first();
+        $ownerinfo = User::findOrFail($mypet->userid);
 
-        return view('mypets.show', compact('mypet', 'photos'));
+
+
+//dd($mypet,$allOwnerDetails,$ownerinfo);
+
+
+
+//dd($mypet,$mergedOwnerDetails,$ownerinfo,$ownerDetailsToShow);
+        return view('mypets.show', compact('mypet', 'photos','ownerinfo','allOwnerDetails'));
 
  //       return view('mypets.show', compact('mypet'));
     }
 
     // Add other CRUD methods as needed
 
+
+public function edit($petId)
+    {
+        $pet = Mypet::findOrFail($petId);
+
+//dd($pet);
+
+
+        // Check if the authenticated user is the owner of the pet
+        if ($pet->user->id !== auth()->user()->id) {
+            return redirect()->route('dashboard.index')->with('error', 'You are not authorized to edit this pet.');
+        }
+
+        // Add logic to handle the edit view and form
+        return view('mypets.edit', compact('pet'));
+    }
+
+
+ public function update(Request $request, $petId)
+    {
+        $pet = Mypet::findOrFail($petId);
+
+        // Check if the authenticated user is the owner of the pet
+        if ($pet->user->id !== auth()->user()->id) {
+            return redirect()->route('dashboard.index')->with('error', 'You are not authorized to edit this pet.');
+        }
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'age' => 'required|integer',
+        ]);
+
+        // Update the name and age of the pet
+        $pet->update([
+            'name' => $request->input('name'),
+            'age' => $request->input('age'),
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'Pet updated successfully.');
+    }
 
 
 
@@ -96,7 +149,7 @@ public function deletePhoto(Request $request, $photoId)
 }
 
 
-
+ 
 
 
 }

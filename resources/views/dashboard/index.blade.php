@@ -31,6 +31,7 @@
                                 {{ $user->city }} ,  {{ $user->state }}<br> {{ $user->zip }}</p>
 
                             <p>Email: {{ $user->email }}</p>
+                             <p>Phone: {{ $user->phone }}</p>
                             <!-- Add more user-related information as needed -->
                             {{-- $user --}}
                         @else
@@ -51,7 +52,11 @@
                         @else
                             <ul>
                                 @foreach($mypets as $pet)
-                                    <li>{{ $pet->name }} [ {{ $pet->species}} ]</li>
+                                    <li><a href="{{route('mypets.show',['id' => $pet->id])}}">{{ $pet->name }} </a>[ {{ $pet->species}} ] {{$pet->id}} 
+@if($pet->user->id === auth()->user()->id) <!-- Check if the user is the owner -->
+            <a href="{{ route('pets.edit', ['petId' => $pet->id]) }}" >Edit</a>
+        @endif
+                                    </li>
 
                                     {{--$pet--}}
                                 @endforeach

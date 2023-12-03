@@ -5,15 +5,73 @@
 @section('content')
 <div class="container">
 
-    <h1>{{ $mypet->name }}</h1>
-    
+<div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">{{ $mypet->name }}</h1>
 
-    <!-- Add a link to upload a new photo -->
+       <!-- Add a link to upload a new photo -->
     <p><a href="{{ route('pet_photos.create', $mypet->id) }}">Add a Photo</a></p>
-
 
     <p>Species: {{ $mypet->species }}</p>
     <p>Age: {{ $mypet->age }}</p>
+
+                    </div>
+                </div>
+
+@if($allOwnerDetails)
+    @if($allOwnerDetails->pet_id == $mypet->id)
+<div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Owner Details</h1>
+
+       @if($allOwnerDetails->name)
+         UserName :  {{$ownerinfo->name}} <br>
+       @endif
+       @if($allOwnerDetails->fname)
+        First Name : {{$ownerinfo->fname}} <br>
+       @endif
+       @if($allOwnerDetails->lname)
+        Last Name : {{$ownerinfo->lname}} <br>
+       @endif
+       @if($allOwnerDetails->email)
+         Email : {{$ownerinfo->email}} <br>
+       @endif
+       @if($allOwnerDetails->phone)
+          {{$ownerinfo->phone}} <br>
+       @endif
+       @if($allOwnerDetails->address)
+          {{$ownerinfo->address}}<br>
+       @endif
+       @if($allOwnerDetails->city)
+          {{$ownerinfo->city}}<br>
+       @endif
+       @if($allOwnerDetails->state)
+          {{$ownerinfo->state}}<br>
+       @endif
+       @if($allOwnerDetails->zip)
+          {{$ownerinfo->zip}}<br>
+       @endif
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+{{--$ownerinfo}}
+<hr>
+{{$allOwnerDetails}}
+
+
+{{$allOwnerDetails--}}
+@endif
+<HR>
+
+ @endif
 
 <table class="table table-dark table-striped">
 

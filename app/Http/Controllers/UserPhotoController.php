@@ -26,10 +26,6 @@ class UserPhotoController extends Controller
         $myupdate[0]->update(['is_profile' => 0]); 
         }
         
-
-
-      
-
         auth()->user()->profileImage()->create([
             'photo_path' => $photoPath,
             'is_profile' => true,

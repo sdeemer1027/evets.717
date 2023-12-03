@@ -37,7 +37,7 @@
         <div class="col-md-12">
             {{--$latestPetPhotos--}}
   <div class="container mt-5">
-        <h1 class="text-center mb-4">Welcome to the last 20 images of the Pet Photo Gallery Uploaded</h1>
+        <h1 class="text-center mb-4">The last 20 images of the Pet Photo Gallery</h1>
         <div class="scrolling-wrapper">
             <div class="scrolling-content" id="scrollingContent">
                 @foreach($latestPetPhotos as $photo)
@@ -54,18 +54,31 @@
 
 
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
+                <div class="card-header">Veterinary Practice (Total: {{$officescount}})</div>
+                    @if($user->zip)
+                <div class="card-header">
+<form action="/search/{{$user->zip}}{{$zip}}" method="get">
+                    Find a Vet  in your area               
+                 <a href="{{ route('searchvet', $user->zip) }}">{{$user->zip}}</a> Or 
+                search a zipcode  
+<div class="row">
+    <div class="col">
+        <input type="text" class="form-control" id="zip" name="zip" value="{{ $zip ?? '' }}" placeholder="Enter Zip Code">
+    </div>
+    <div class="col">
+        <button type="submit" class="btn btn-primary">Update Pet</button>
+    </div>
+</div>
+    @csrf
+</form>               
+                </div>
+                    @endif
+                <div class="card-body">{{-- 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                    @endif
-            
-
-                     Vets ready and waiting
-                        <BR><BR>
+                    @endif           --}}
                         <table class="table  table-striped">
                             <tr>
                                 <td>Name</td>

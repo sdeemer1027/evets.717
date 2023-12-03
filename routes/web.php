@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MypetController;
 use App\Http\Controllers\PetPhotoController;
-
 use App\Http\Controllers\DashboardController;
-
 use App\Http\Controllers\UserPhotoController;
 
 
@@ -37,6 +35,11 @@ Route::get('/mypets/create', [MypetController::class, 'create'])->name('mypets.c
 Route::post('/mypets', [MypetController::class, 'store'])->name('mypets.store');
 Route::get('/mypets/{id}', [MypetController::class, 'show'])->name('mypets.show');
 
+
+Route::get('/pets/{petId}/edit', [MypetController::class, 'edit'])->name('pets.edit');
+Route::put('/pets/{petId}', [MypetController::class, 'update'])->name('pets.update');
+
+
 Route::delete('/delete-photo/{photoId}', [MypetController::class, 'deletePhoto'])->name('delete-photo');
 
 Route::get('/mypets/{petId}/photos/create', [PetPhotoController::class, 'create'])->name('pet_photos.create');
@@ -53,6 +56,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+Route::get('/vetdetails/{id}', [App\Http\Controllers\VetofficeController::class, 'show'])->name('vetdetails');
+Route::get('/search/{zip}', [App\Http\Controllers\VetofficeController::class, 'searchByRadius'])->name('searchvet');
 
 Route::get('/office-locations', [App\Http\Controllers\OfficeLocationController::class, 'index'])->name('office-locations.index');
 Route::get('/office-locations/create', [App\Http\Controllers\OfficeLocationController::class,'create'])->name('office-locations.create');
@@ -60,7 +65,6 @@ Route::post('/office-locations', [App\Http\Controllers\OfficeLocationController:
 
 Route::get('/map',  [App\Http\Controllers\MapController::class, 'index']);
 
-Route::get('search', [App\Http\Controllers\VetofficeController::class, 'searchByRadius']);
 
 Route::post('/upload-profile-image', [UserPhotoController::class, 'uploadProfileImage'])->name('upload.profile.image');
 Route::post('/upload-gallery-photo', [UserPhotoController::class, 'uploadGalleryPhoto'])->name('upload.gallery.photo');

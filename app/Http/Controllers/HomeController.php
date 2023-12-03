@@ -29,8 +29,7 @@ class HomeController extends Controller
     public function index()
     {
 
-
-
+$zip ='';
 //$user = '';
         if (Auth::check()) {
             // User is logged in
@@ -52,18 +51,16 @@ class HomeController extends Controller
         }
 
         $offices = vetoffices::where('id', '>', '0')->paginate(15);
+         $officescount = vetoffices::where('id', '>', '0')->count();
         $petgroomers= petgroomers::where('id','>','0')->get();//->paginate(15);
 //$petgroomers='';
         $pets= petgroomers::where('id','>','0')->get();
 
-
  // Fetch the latest 20 pet pictures
         $latestPetPhotos = PetPhoto::latest()->take(20)->get();
 
-   //     return view('welcome', compact('latestPetPhotos'));
+ 
 
-
-
-        return view('home', compact('offices','user','petgroomers','pets','latestPetPhotos'));
+        return view('home', compact('offices','user','petgroomers','pets','latestPetPhotos','officescount','zip'));
     }
 }
