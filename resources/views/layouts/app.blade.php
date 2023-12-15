@@ -156,6 +156,7 @@
 
 
                     <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
+                    <a href="/petfinder" class="nav-item nav-link">Find A Pet</a>
                     <a href="{{ route('service') }}" class="nav-item nav-link">Service</a>
                     <a href="{{ route('price') }}" class="nav-item nav-link">Price</a>
                     <a href="{{ route('booking') }}" class="nav-item nav-link">Booking</a>

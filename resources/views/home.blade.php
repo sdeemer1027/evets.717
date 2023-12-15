@@ -134,7 +134,37 @@
 
                         {{--$pets--}}
 
+{{--$allusers--}}<BR><BR>
+Shelters in your area ----
+<table class="table  table-striped">
+                            <tr>
+                                <td>Name</td>
+                                <td>phone</td>
+                                <td>email</td>
+                                <td>address</td>                                
+                                <td>state</td>
+                                <td>Zip</td>
 
+                            </tr>
+
+
+
+@foreach($api_response as $shelter)
+
+
+ <tr>
+                                <td>{{--$shelter['id']--}}{{$shelter['name']}}</td>
+                                <td>{{$shelter['phone']}}</td>
+                                <td>{{$shelter['email']}}</td>
+                                <td>{{$shelter['address']['address1']}}</td>                                
+                                <td>{{$shelter['address']['state']}}</td>
+                                <td>{{$shelter['address']['postcode']}}</td>
+
+                            </tr>
+@endforeach
+
+</table>
+{{--$api_response--}}
 
                 </div>
             </div>

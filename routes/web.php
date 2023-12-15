@@ -6,6 +6,7 @@ use App\Http\Controllers\PetPhotoController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserPhotoController;
 
+use App\Http\Controllers\PetfinderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ use App\Http\Controllers\UserPhotoController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 
 Route::get('/about', function () {    return view('about');})->name('about');
 Route::get('/service', function () {    return view('service');})->name('service');
@@ -68,3 +71,22 @@ Route::get('/map',  [App\Http\Controllers\MapController::class, 'index']);
 
 Route::post('/upload-profile-image', [UserPhotoController::class, 'uploadProfileImage'])->name('upload.profile.image');
 Route::post('/upload-gallery-photo', [UserPhotoController::class, 'uploadGalleryPhoto'])->name('upload.gallery.photo');
+
+
+
+
+
+
+
+
+// Example route for obtaining an access token
+Route::get('/zzzget-access-token', [PetfinderController::class, 'getAccessToken']);
+//Route::get('/petfinder', function () {
+//    return view('petfinder.index');
+//})->name('petfinder.index');
+
+Route::get('/petfinder', [PetfinderController::class, 'index'])->name('petfinder.index');
+Route::get('/petfinder/search', [PetfinderController::class, 'search'])->name('petfinder.search');
+
+Route::get('/petfinder/show/{id}', [PetfinderController::class, 'show'])->name('petfinder.show');
+
