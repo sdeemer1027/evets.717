@@ -42,6 +42,16 @@ return new class extends Migration
             'email'    => 'dr.steve@steven.news',
             'password' => bcrypt('password'),
         ]);
+
+
+
+
+
+
+
+
+
+
     }
 
     /**

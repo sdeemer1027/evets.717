@@ -39,7 +39,7 @@ class PetPhotoController extends Controller
 public function deletePhoto(Request $request, $photoId)
 {
     $photo = PetPhoto::findOrFail($photoId);
-dd($request);
+//dd($request);
     // Add authorization logic here if needed
 
     // Delete the photo file from storage

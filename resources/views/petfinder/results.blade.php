@@ -111,7 +111,7 @@
                             @endforeach
                              
                      Adopt Me?? <BR> My ID is : <a href="{{route('petfinder.show', $futpet['id'])}}">{{$futpet['id']}}</a><br>
-{{$futpet['url']}}<br>
+{{--$futpet['url']--}}<br>
 
 
                      {{$futpet['contact']['email']}}<br>

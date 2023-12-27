@@ -56,13 +56,13 @@ $zip ='';
         }
      //   dd($uzip,$user);
         if($uzip){
-    //        $offices = vetoffices::where('zip', $uzip)->paginate(15);
+            $offices = vetoffices::where('zip', $uzip)->paginate(10);
         }else {
 
-   //         $offices = vetoffices::where('id', '>', '0')->paginate(15);
+            $offices = vetoffices::where('id', '>', '0')->paginate(10);
         }
 
-        $offices = vetoffices::where('id', '>', '0')->paginate(15);
+ //       $offices = vetoffices::where('id', '>', '0')->paginate(15);
          $officescount = vetoffices::where('id', '>', '0')->count();
         $petgroomers= petgroomers::where('id','>','0')->get();//->paginate(15);
 //$petgroomers='';

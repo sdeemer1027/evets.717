@@ -69,12 +69,46 @@ class User extends Authenticatable
         return $this->hasOne(UserPhoto::class)->where('is_profile', true);
     }
 
+//public function friends()
+//    {
+//        return $this->hasMany(Friend::class, 'user_id');
+//    }
+
+public function friends()
+{
+    return $this->belongsToMany(User::class, 'friends', 'user_id', 'friend_id')->withPivot('status');
+}
 
 
 
+    public function friendOf()
+    {
+        return $this->hasMany(Friend::class, 'friend_id');
+    }
+
+public function isFriend()
+    {
+        return Friend::where('user_id', auth()->id())
+            ->where('friend_id', $this->id)
+            ->where('status', 'approved')
+            ->exists();
+    }
 
 
 
+ public function friendStatus()
+    {
+        $friendship = Friend::where(function ($query) {
+            $query->where('user_id', auth()->id())
+                ->where('friend_id', $this->id)
+                ->where('status', 'pending');
+        })->orWhere(function ($query) {
+            $query->where('user_id', $this->id)
+                ->where('friend_id', auth()->id())
+                ->where('status', 'pending');
+        })->first();
 
+        return $friendship ? 'pending' : null;
+    }
 
 }

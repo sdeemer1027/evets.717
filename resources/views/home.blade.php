@@ -54,7 +54,9 @@
 
 
             <div class="card">
-                <div class="card-header">Veterinary Practice (Total: {{$officescount}})</div>
+                <div class="card-header">Veterinary Practice (Total: {{$officescount}})<br>
+  we have   <strong> {{$petgroomers->count()}} </strong> Groomers ready with the Clippers and Bath
+                </div>
                     @if($user->zip)
                 <div class="card-header">
 <form action="/search/{{$user->zip}}{{$zip}}" method="get">
@@ -129,13 +131,14 @@
 --}}
                         <hr>
 
-                 we have   <strong> {{$petgroomers->count()}} </strong> Groomers ready with the Clippers and Bath
+               
 
 
                         {{--$pets--}}
 
 {{--$allusers--}}<BR><BR>
-Shelters in your area ----
+<div class="card-header">
+Shelters in your area </div>
 <table class="table  table-striped">
                             <tr>
                                 <td>Name</td>

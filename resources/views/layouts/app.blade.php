@@ -48,6 +48,12 @@
         crossorigin=""
     />
 
+<style>
+
+a i {
+    margin-right: 5px;
+}
+</style>
 </head>
 <body>
    
@@ -75,8 +81,8 @@
                     <a class="text-white pl-3" href="{{ route('register') }}">Register</a>
                              @endif
                              @else                         
-                                <a id="navbarDropdown" class="text-white pl-3" href="{{ route('home') }}" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} 
+                                <a id="navbarDropdown" class="text-white pl-3" href=" {{route('dashboard')}}" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} {{-- route('home') --}}
                                 </a> 
                                 <span class="text-white">&nbsp;&nbsp;&nbsp;|</span>                               
                                     <a class="text-white pl-3" href="{{ route('logout') }}"
@@ -141,8 +147,14 @@
                          <div class="nav-item dropdown">
                            <a href="{{ route('home') }}"  class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} </a> 
                                <div class="dropdown-menu rounded-0 m-0">
+                                @auth
+                            @if(auth()->user()->id == 1)                        
+                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>                              
+                            @endif
+                                @endauth
                                  <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
                                  <a class="dropdown-item" href="{{ route('mypets.index') }}">My Pets</a>
+                        
                                  <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a>
@@ -160,9 +172,9 @@
                     <a href="{{ route('service') }}" class="nav-item nav-link">Service</a>
                     <a href="{{ route('price') }}" class="nav-item nav-link">Price</a>
                     <a href="{{ route('booking') }}" class="nav-item nav-link">Booking</a>
-                    <a href="{{ route('blog') }}" class="nav-item nav-link">Articles</a>                       
+                    <a href="/articles" class="nav-item nav-link">Articles</a>                       
                     <a href="{{ route('home') }}" class="nav-item nav-link">Contact</a>
-{{--
+{{--{{ route('blog') }}
                           <div class="nav-item dropdown">
                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>                       
                                <div class="dropdown-menu rounded-0 m-0">

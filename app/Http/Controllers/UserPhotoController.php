@@ -33,6 +33,19 @@ class UserPhotoController extends Controller
 
         return redirect()->back()->with('success', 'Profile image uploaded successfully.');
     }
+public function makeProfile(Request $request)
+{
+
+$newoldid=UserPhoto::where('user_id',$request->uid)->update(['is_profile' => 0]);
+
+$newpid = UserPhoto::where('id' ,$request->id)->update(['is_profile' => 1]);
+
+//dd($request->uid,$request->id,$request);
+return redirect()->back()->with('success', 'Profile image uploaded successfully.');
+}
+
+
+
 
     public function uploadGalleryPhoto(Request $request)
     {
@@ -49,4 +62,42 @@ class UserPhotoController extends Controller
 
         return redirect()->back()->with('success', 'Gallery photo uploaded successfully.');
     }
+
+
+public function deletePhoto($id)
+    {
+      
+
+  
+
+        // Find the photo by ID
+        $photo = UserPhoto::find($id);
+
+ 
+Storage::delete('public/' .$photo->photo_path);
+//dd($id,$photo);
+        // Perform deletion logic
+        if ($photo) {
+            // Delete the photo from storage
+            // ...
+
+            // Delete the photo from the database
+            $photo->delete();
+
+            // Redirect or respond as needed
+            return redirect()->back()->with('success', 'Photo deleted successfully.');
+        } else {
+            // Photo not found, handle accordingly
+            return redirect()->back()->with('error', 'Photo not found.');
+        }
+    }
+
+
+
+
+
+
+
+
+
 }
